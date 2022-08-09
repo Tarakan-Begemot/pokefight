@@ -5,3 +5,28 @@
 .App {
   text-align: center;
 }
+.card {
+  position: relative;
+  perspective: 1000px;
+}
+.front, .back {
+  position: absolute;
+  transition: 2s;
+  backface-visibility: hidden;
+}
+
+/* .back {
+  transform: rotateY(180deg);
+}
+.card:hover .front {
+  transform: rotateY(360deg); 
+}
+.card:hover .back {
+  transform: rotateY(540deg); 
+} */
+
+
+/* .moving {
+    transition: transform 3s;
+    transform: translateX(-500px); 
+} */
