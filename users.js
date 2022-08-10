@@ -3,6 +3,18 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 
 
+function generateToken(user) {
+  return jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+    },
+    SECRET_KEY,
+    { expiresIn: "1h" }
+  );
+}
+
 module.exports = {
   Mutation: {
 async register(_, 
@@ -21,3 +33,7 @@ async register(_,
         password,
         createdAt: new Date().toISOString(),
       });
+//saving the user to db
+      const res = await newUser.save();
+}
+}
