@@ -14,12 +14,20 @@ const App = () => {
   const [confirm, setConfirm] = useState(false);
   const [turnCounter, setTurnCounter] = useState(1);
   const [fight, setFight] = useState(false);
+  const [prepare, setPrepare] = useState(false);
   // const [disabled, setDisabled] = useState(false);
 
   const FadeOut = useSpring({
     to: {
       transition: 'opacity 1s',
       opacity: confirm ? 0 : 1,
+    },
+  });
+
+  const FadeIn = useSpring({
+    to: {
+      transition: 'opacity 3s',
+      opacity: prepare ? 1 : 0,
     },
   });
 
@@ -58,16 +66,27 @@ const App = () => {
       <div className="absolute top-[238px] right-[250px] mr-[200px] scale(0.8, 0.8)">
         <AppearanceAnimation toggle={confirm} />
       </div>
-
-      <animated.div style={FadeOut}>
-        <div className="flex justify-center">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex justify-center"
-            onClick={() => setConfirm((con) => !con)}>
-            CONFIRM
-          </button>
-        </div>
-      </animated.div>
+      {!prepare ? (
+        <animated.div style={FadeOut}>
+          <div className="flex justify-center">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex justify-center"
+              onClick={() => setConfirm((con) => !con)}>
+              CONFIRM
+            </button>
+          </div>
+        </animated.div>
+      ) : (
+        <animated.div style={FadeIn}>
+          <div className="flex justify-center">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex justify-center"
+              onClick={() => setConfirm((con) => !con)}>
+              FIGHT
+            </button>
+          </div>
+        </animated.div>
+      )}
     </div>
   );
 };

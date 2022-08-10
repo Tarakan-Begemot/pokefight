@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Card from './Card';
 
 const MoveAnimation = ({ toggle, setImageUrl, imageNum, card }) => {
+  const [attackStyle, setAttackStyle] = useState('player-attack');
   const movingCard = useSpring({
     to: {
       transition: 'transform 2s',
@@ -11,7 +13,13 @@ const MoveAnimation = ({ toggle, setImageUrl, imageNum, card }) => {
 
   return (
     <animated.div style={movingCard}>
-      <Card toggle={toggle} card={card} imageNum={imageNum} setImageUrl={setImageUrl} />
+      <Card
+        toggle={toggle}
+        card={card}
+        imageNum={imageNum}
+        setImageUrl={setImageUrl}
+        attackStyle={attackStyle}
+      />
     </animated.div>
   );
 };

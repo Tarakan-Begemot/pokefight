@@ -9,7 +9,7 @@ import SpAttack from './card-images/icons8-star-50.png';
 import SpDefense from './card-images/icons8-query-50.png';
 import { useSpring, animated, config } from 'react-spring';
 
-const Card = ({ card, imageNum, toggle }) => {
+const Card = ({ card, imageNum, toggle, attackStyle }) => {
   const infoStyle = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
@@ -60,7 +60,7 @@ const Card = ({ card, imageNum, toggle }) => {
   return (
     <div className="moving">
       <div className="flex justify-center card">
-        <animated.div style={cardFront} className="front">
+        <animated.div style={cardFront} className={'front ' + attackStyle}>
           <div className="rounded-[30px] shadow-2xl bg-white max-w-sm">
             <div className="mx-auto bg-amber-300 p-10 rounded-t-[30px] min-h-[384px] min-w-[384px]">
               {imageNum !== '' ? (
