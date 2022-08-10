@@ -15,7 +15,7 @@ const App = () => {
   const [turnCounter, setTurnCounter] = useState(1);
   const [fight, setFight] = useState(false);
   const [prepare, setPrepare] = useState(false);
-  // const [disabled, setDisabled] = useState(false);
+  const [position, setPosition] = useState('relative z-10');
 
   const FadeOut = useSpring({
     to: {
@@ -57,7 +57,14 @@ const App = () => {
         <h1 className="text-center m-[50px] text-5xl font-bold">Click button Start</h1>
       )}
       {card ? (
-        <MoveAnimation card={card} imageNum={imageUrl} setImageUrl={setImageUrl} toggle={confirm} />
+        <div className={position}>
+          <MoveAnimation
+            card={card}
+            imageNum={imageUrl}
+            setImageUrl={setImageUrl}
+            toggle={confirm}
+          />
+        </div>
       ) : (
         <p>Loading</p>
       )}

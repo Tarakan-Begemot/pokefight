@@ -10,8 +10,6 @@ const OpponentsStats = ({ player }) => {
   const images = [Health, Speed, Sword, Shield];
 
 
-  console.log(window.innerWidth / 2 - 192);
-  const statsLeft = window.innerWidth / 2 - 192;
   return (
     <>
       <div className="w-[384px] border text-5xl p-5 absolute left-[768px] top-[200px] mt-[80px] shadow-xl rounded-lg">

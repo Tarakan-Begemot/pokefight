@@ -33,7 +33,7 @@ const AppearanceAnimation = ({ toggle }) => {
     pokeImage();
   }, [compRandomPoke]);
   return compCard && compImageUrl ? (
-    <animated.div style={movingCard}>
+    <animated.div style={movingCard} className="damage-taken">
       <Card card={compCard} toggle={toggle} imageNum={compImageUrl} />
     </animated.div>
   ) : null;

@@ -16,27 +16,21 @@
 }
 
 .player-attack {
-  /* -webkit-animation: pulsing 2s infinite; */
   transform-origin: center bottom;
-  animation: pulsing 10s infinite;
+  animation: hitting 10s infinite;
 }
 
-/* @-webkit-keyframes pulsing {
-  0% {
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5)
-  }
-  50% {
-    -webkit-transform: scale(1.0, 1.0);
-    transform: scale(1.0, 1.0);
-  }
-  100% {
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-  }
-} */
+.damage-taken {
+  animation: taking 10s infinite;
+}
 
-@keyframes pulsing {
+.damage-taken-back {
+  animation: taking-back 10s infinite;
+}
+
+
+
+@keyframes hitting {
   0% {
    transform: rotate(0);
   }
@@ -51,13 +45,36 @@
     transform: rotate(20deg) translateX(700px) translateY(-300px);
   }
 
-
-
   75% {
     transform: rotate(0);
 
   } 
   100% {
     transform: rotate(0);
+  }
+}
+
+
+@keyframes taking {
+  0% {
+    transform: rotateY(0deg) scale(0.8, 0.8);
+  }
+  13% {
+    transform: rotateY(0deg) scale(0.8, 0.8);
+  }
+  50% {
+    transform: rotateY(720deg) scale(0.8, 0.8);
+  }
+}
+
+@keyframes taking-back {
+  0% {
+    transform: rotateY(180deg) scale(0.8, 0.8);
+  }
+  13% {
+    transform: rotateY(180deg) scale(0.8, 0.8);
+  }
+  50% {
+    transform: rotateY(900deg) scale(0.8, 0.8);
   }
 }
