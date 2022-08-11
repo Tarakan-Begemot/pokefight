@@ -26,6 +26,7 @@ const App = () => {
 
   const FadeIn = useSpring({
     to: {
+      // delay: 3000,
       transition: 'opacity 3s',
       opacity: prepare ? 1 : 0,
     },
@@ -63,6 +64,7 @@ const App = () => {
             imageNum={imageUrl}
             setImageUrl={setImageUrl}
             toggle={confirm}
+            fight={fight}
           />
         </div>
       ) : (
@@ -71,29 +73,32 @@ const App = () => {
       {confirm ? <StatsAnimation player={card} /> : null}
       <SelectComponent setRandomPoke={setRandomPoke} toggle={confirm} />
       <div className="absolute top-[238px] right-[250px] mr-[200px] scale(0.8, 0.8)">
-        <AppearanceAnimation toggle={confirm} />
+        <AppearanceAnimation toggle={confirm} fight={fight} />
       </div>
       {!prepare ? (
         <animated.div style={FadeOut}>
           <div className="flex justify-center">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex justify-center"
-              onClick={() => setConfirm((con) => !con)}>
+              onClick={() => {
+                setConfirm((con) => !con);
+                setTimeout(() => setPrepare(true), 1500);
+              }}>
               CONFIRM
             </button>
           </div>
         </animated.div>
-      ) : (
+      ) : prepare ? (
         <animated.div style={FadeIn}>
           <div className="flex justify-center">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex justify-center"
-              onClick={() => setConfirm((con) => !con)}>
+              onClick={() => setFight(true)}>
               FIGHT
             </button>
           </div>
         </animated.div>
-      )}
+      ) : null}
     </div>
   );
 };
