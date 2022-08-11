@@ -32,7 +32,11 @@ const SelectComponent = ({ setRandomPoke, toggle }) => {
   //   };
   //   getCards();
   // }, [cards]);
-  return (
+  return localDex === null ? (
+    <div className="max-w-[384px] m-5 h-[636px] ml-[200px]">
+      <p className="text-center m-[50px] text-5xl font-bold">LOADING</p>
+    </div>
+  ) : (
     <>
       <animated.div style={hideElement}>
         <div className="max-w-[384px] m-5 h-[636px] ml-[200px]">
