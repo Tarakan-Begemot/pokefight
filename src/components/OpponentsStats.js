@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Sword from './card-images/icons8-sword-50.png';
 import Shield from './card-images/icons8-shield-50.png';
 import Health from './card-images/icons8-heart-60.png';
 import Speed from './card-images/icons8-next-page-64.png';
+import { FightContext } from '../App';
 
-const OpponentsStats = ({ player }) => {
-  const [opponentsStats, setOpponentsStats] = useState({ player: player.base, computer: 'value' });
+const OpponentsStats = () => {
+  const opponents = useContext(FightContext);
+  const [opponentsStats, setOpponentsStats] = useState(opponents.opponents);
 
   const images = [Health, Speed, Sword, Shield];
-
 
   return (
     <>
@@ -16,10 +17,10 @@ const OpponentsStats = ({ player }) => {
         <p className="text-center mb-2">Fighters Stats</p>
         <div className="flex text-7xl">
           <div className="w-[40%] text-right p-2">
-            <p>{opponentsStats.player.HP}</p>
-            <p>{opponentsStats.player.Speed}</p>
-            <p>{opponentsStats.player.Attack}</p>
-            <p>{opponentsStats.player.Defense}</p>
+            <p>{opponentsStats[0].base.HP}</p>
+            <p>{opponentsStats[0].base.Speed}</p>
+            <p>{opponentsStats[0].base.Attack}</p>
+            <p>{opponentsStats[0].base.Defense}</p>
           </div>
 
           <div className="w-[20%] p-2">
@@ -30,10 +31,10 @@ const OpponentsStats = ({ player }) => {
             ))}
           </div>
           <div className="w-[40%] p-2 text-7xl">
-            <p>{opponentsStats.player.HP}</p>
-            <p>{opponentsStats.player.Speed}</p>
-            <p>{opponentsStats.player.Attack}</p>
-            <p>{opponentsStats.player.Defense}</p>
+            <p>{opponentsStats[1].base.HP}</p>
+            <p>{opponentsStats[1].base.Speed}</p>
+            <p>{opponentsStats[1].base.Attack}</p>
+            <p>{opponentsStats[1].base.Defense}</p>
           </div>
         </div>
       </div>

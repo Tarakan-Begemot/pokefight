@@ -11,7 +11,6 @@ const PokeList = ({ localDex, inputName, setRandomPoke }) => {
     setRandomPoke(i);
   };
 
-  console.log(filteredList);
   return (
     <div className="min-h-[536px]">
       <div className="text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white my-4 mx-[50px] overflow-auto max-h-[536px]">

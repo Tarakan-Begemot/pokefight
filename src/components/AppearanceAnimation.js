@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useSpring, animated } from 'react-spring';
 import CompAnimationSwich from './CompAnimationSwich';
 import Card from './Card';
 import axios from 'axios';
+import { FightContext } from '../App';
 
 const AppearanceAnimation = ({ toggle, fight }) => {
   const [compCard, setCompCard] = useState();
@@ -17,11 +18,15 @@ const AppearanceAnimation = ({ toggle, fight }) => {
       transform: toggle ? 'scale(0.8, 0.8)' : 'scale(0, 0)',
     },
   });
+  const opponents = useContext(FightContext);
 
   useEffect(() => {
     const getCard = async () => {
       await axios.get(`http://localhost:3476/pokedex/${compRandomPoke}`).then((response) => {
         setCompCard(response.data[0]);
+        setTimeout(() => {
+          opponents.setOpponents((prev) => [...prev, response.data[0]]);
+        }, 1000);
       });
     };
     const pokeImage = () => {

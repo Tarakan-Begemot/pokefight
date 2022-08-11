@@ -17,15 +17,15 @@
 
 .player-attack {
   transform-origin: center bottom;
-  animation: hitting 10s infinite;
+  animation: hitting 10s;
 }
 
 .damage-taken {
-  animation: taking 10s infinite;
+  animation: taking 10s;
 }
 
 .damage-taken-back {
-  animation: taking-back 10s infinite;
+  animation: taking-back 10s;
 }
 
 

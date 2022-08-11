@@ -8,7 +8,6 @@ const CompAnimationSwich = ({ toggle, setImageUrl, imageNum, card, fight }) => {
 
   useEffect(() => {
     fight ? setDamageTakenStyle('damage-taken') : setDamageTakenStyle(false);
-    console.log(fight);
   }, [fight]);
 
   return (
