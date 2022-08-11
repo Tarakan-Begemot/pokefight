@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Card from './Card';
 
-const MoveAnimation = ({ toggle, setImageUrl, imageNum, card, fight }) => {
+const MoveAnimation = ({ toggle, setImageUrl, imageNum, card, fight, first, turnCounter }) => {
   const [attackStyle, setAttackStyle] = useState(false);
   const [damageTakenStyle, setDamageTakenStyle] = useState(false);
 
   useEffect(() => {
-    fight ? setAttackStyle('player-attack') : setAttackStyle(false);
-    console.log(fight);
-  }, [fight]);
+    fight && first ? setAttackStyle('player-attack') : setAttackStyle(false);
+    fight && !first ? setDamageTakenStyle('damage-taken-reverse') : setDamageTakenStyle(false);
+  }, [turnCounter]);
 
   const movingCard = useSpring({
     to: {

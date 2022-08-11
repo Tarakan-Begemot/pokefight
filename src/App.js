@@ -13,12 +13,12 @@ const App = () => {
   const [randomPoke, setRandomPoke] = useState(1);
   const [imageUrl, setImageUrl] = useState('');
   const [confirm, setConfirm] = useState(false);
-  const [turnCounter, setTurnCounter] = useState(1);
+  const [turnCounter, setTurnCounter] = useState(0);
   const [fight, setFight] = useState(false);
   const [prepare, setPrepare] = useState(false);
   const [position, setPosition] = useState('relative z-10');
   const [opponents, setOpponents] = useState([]);
-  const [start, setStart] = useState(true);
+  const [first, setFirst] = useState(false);
 
   const FadeOut = useSpring({
     to: {
@@ -33,10 +33,14 @@ const App = () => {
       opacity: prepare ? 1 : 0,
     },
   });
+  const [player, comp] = opponents;
+
+  console.log('hi');
   const damage = () => {
     setTimeout(() => {
-      let opponentsArr = opponents;
-      const [attaker, defender] = opponentsArr;
+      console.log(first);
+      let attaker = first ? comp : player;
+      let defender = first ? player : comp;
       let defenderHealth = defender.base.HP;
       const atk = attaker.base.Attack;
       const def = defender.base.Defense;
@@ -44,11 +48,12 @@ const App = () => {
       const speed = attaker.base.Speed;
       if (defenderHealth > 0) {
         const hitValue = Math.floor((((2 * hp) / 5 + 2) * speed * (atk / def)) / 50 + 2);
-        setTimeout(
-          () => setOpponents((prev) => [...prev, (prev[1].base.HP = defenderHealth - hitValue)]),
-          3000,
-        );
-        // setOpponents((prev) => [...prev, (prev[1].base.HP = defenderHealth - hitValue)]);
+        setTimeout(() => {
+          setOpponents((prev) => [
+            ...prev,
+            (prev[first ? 0 : 1].base.HP = defenderHealth - hitValue),
+          ]);
+        }, 3000);
       }
     }, 1500);
   };
@@ -85,11 +90,13 @@ const App = () => {
         {card ? (
           <div className={position}>
             <MoveAnimation
+              first={first}
               card={card}
               imageNum={imageUrl}
               setImageUrl={setImageUrl}
               toggle={confirm}
               fight={fight}
+              turnCounter={turnCounter}
             />
           </div>
         ) : (
@@ -98,7 +105,7 @@ const App = () => {
         {confirm ? <StatsAnimation player={card} /> : null}
         <SelectComponent setRandomPoke={setRandomPoke} toggle={confirm} />
         <div className="absolute top-[238px] right-[250px] mr-[200px] scale(0.8, 0.8)">
-          <AppearanceAnimation toggle={confirm} fight={fight} />
+          <AppearanceAnimation toggle={confirm} fight={fight} first={first} turnCounter={turnCounter}/>
         </div>
         {!prepare ? (
           <animated.div style={FadeOut}>
@@ -122,6 +129,8 @@ const App = () => {
                 onClick={() => {
                   setFight(true);
                   damage();
+                  setFirst(!first);
+                  setTurnCounter(turnCounter + 1);
                 }}>
                 FIGHT
               </button>

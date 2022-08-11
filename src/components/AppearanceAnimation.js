@@ -5,7 +5,7 @@ import Card from './Card';
 import axios from 'axios';
 import { FightContext } from '../App';
 
-const AppearanceAnimation = ({ toggle, fight }) => {
+const AppearanceAnimation = ({ toggle, fight, first, turnCounter }) => {
   const [compCard, setCompCard] = useState();
   const [compImageUrl, setCompImageUrl] = useState();
   const [compRandomPoke, setCompRandomPoke] = useState(Math.floor(Math.random() * 810));
@@ -50,6 +50,8 @@ const AppearanceAnimation = ({ toggle, fight }) => {
         attackStyle={attackStyle}
         damageTakenStyle={damageTakenStyle}
         fight={fight}
+        first={first}
+        turnCounter={turnCounter}
       />
     </animated.div>
   ) : null;
