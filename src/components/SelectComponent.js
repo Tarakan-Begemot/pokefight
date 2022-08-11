@@ -10,8 +10,6 @@ const SelectComponent = ({ setRandomPoke, toggle }) => {
   const [cards, setCards] = useState([]);
   const opponents = useContext(FightContext);
 
-  // opponents.setOpponents(23);
-
   const localDex = JSON.parse(localStorage.getItem('localDex'));
   const getCards = async () => {
     await axios.get(`http://localhost:3476/pokedex/`).then((response) => {
@@ -19,19 +17,9 @@ const SelectComponent = ({ setRandomPoke, toggle }) => {
     });
   };
   getCards();
-
   const hideElement = useSpring({
     to: { transition: 'opacity 2s', opacity: toggle ? 0 : 1 },
   });
-
-  // useEffect(() => {
-  //   const getCards = async () => {
-  //     await axios.get(`http://localhost:3476/pokedex/`).then((response) => {
-  //       localStorage.setItem('localDex', JSON.stringify(response.data));
-  //     });
-  //   };
-  //   getCards();
-  // }, [cards]);
   return localDex === null ? (
     <div className="max-w-[384px] m-5 h-[636px] ml-[200px]">
       <p className="text-center m-[50px] text-5xl font-bold">LOADING</p>

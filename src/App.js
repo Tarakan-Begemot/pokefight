@@ -17,7 +17,7 @@ const App = () => {
   const [fight, setFight] = useState(false);
   const [prepare, setPrepare] = useState(false);
   const [position, setPosition] = useState('relative z-10');
-  const [opponents, setOpponents] = useState();
+  const [opponents, setOpponents] = useState([]);
   const [start, setStart] = useState(true);
 
   const FadeOut = useSpring({
@@ -44,7 +44,7 @@ const App = () => {
       const speed = attaker.base.Speed;
       if (defenderHealth > 0) {
         const hitValue = Math.floor((((2 * hp) / 5 + 2) * speed * (atk / def)) / 50 + 2);
-        setInterval(
+        setTimeout(
           () => setOpponents((prev) => [...prev, (prev[1].base.HP = defenderHealth - hitValue)]),
           3000,
         );
@@ -57,7 +57,9 @@ const App = () => {
     const getCard = async () => {
       await axios.get(`http://localhost:3476/pokedex/${randomPoke}`).then((response) => {
         setCard(response.data[0]);
-        setOpponents([response.data[0]]);
+        setOpponents(
+          opponents.length === 0 ? [response.data[0]] : [response.data[0], ...[opponents[1]]],
+        );
       });
     };
     const pokeImage = () => {

@@ -14,7 +14,7 @@ const OpponentsStats = () => {
 
   const DataValueAnimation = (num) => {
     const { number } = useSpring({
-      reverse: false,
+      // from: { number:  startHP !== opponentsStats[1].base.HP ? 0 :opponentsStats[1].base.HP},
       from: { number: 0 },
       number: num,
       delay: 800,
