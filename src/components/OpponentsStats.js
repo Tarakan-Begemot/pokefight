@@ -25,7 +25,7 @@ const OpponentsStats = () => {
 
   return (
     <>
-      <div className="w-[384px] border text-5xl p-5 absolute left-[768px] top-[200px] mt-[80px] shadow-xl rounded-lg">
+      <div className="w-[384px] border bg-white text-5xl p-5 absolute left-[768px] top-[200px] mt-[80px] shadow-xl rounded-lg">
         <p className="text-center mb-2">Fighters Stats</p>
         <div className="flex text-7xl">
           <div className="w-[40%] text-right p-2">

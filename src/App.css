@@ -135,3 +135,34 @@
     transform: rotateY(900deg);
   }
 }
+
+
+.whole {
+  background-image: url("./components/card-images/background-poke.jpeg");
+  height: 100vh;
+  background-size: contain;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  font-family: cursive;
+  font-size: 55px;
+}
+
+.buttons {
+  text-align: center;
+  display: block;
+}
+
+.bg-my-image {
+  background-image: url("./components/card-images/bg-1.png");
+  background-size:  120% ;
+  /* background-position: left top; */
+
+}

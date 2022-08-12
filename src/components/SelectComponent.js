@@ -12,7 +12,7 @@ const SelectComponent = ({ setRandomPoke, toggle }) => {
 
   const localDex = JSON.parse(localStorage.getItem('localDex'));
   const getCards = async () => {
-    await axios.get(`http://localhost:3476/pokedex/`).then((response) => {
+    await axios.get(`https://pokefight-group3-backend.herokuapp.com/pokedex/`).then((response) => {
       localStorage.setItem('localDex', JSON.stringify(response.data));
     });
   };
@@ -30,7 +30,6 @@ const SelectComponent = ({ setRandomPoke, toggle }) => {
         <div className="max-w-[384px] m-5 h-[636px] ml-[200px]">
           <SearchInput setInputName={setInputName} />
           <PokeList localDex={localDex} inputName={inputName} setRandomPoke={setRandomPoke} />
-          <button onClick={() => console.log(opponents.opponents)}>Click</button>
           <button
             className=" mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => {

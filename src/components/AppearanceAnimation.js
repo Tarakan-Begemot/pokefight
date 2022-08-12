@@ -22,12 +22,14 @@ const AppearanceAnimation = ({ toggle, fight, first, turnCounter }) => {
 
   useEffect(() => {
     const getCard = async () => {
-      await axios.get(`http://localhost:3476/pokedex/${compRandomPoke}`).then((response) => {
-        setCompCard(response.data[0]);
-        setTimeout(() => {
-          opponents.setOpponents((prev) => [...prev, response.data[0]]);
-        }, 1000);
-      });
+      await axios
+        .get(`https://pokefight-group3-backend.herokuapp.com/pokedex/${compRandomPoke}`)
+        .then((response) => {
+          setCompCard(response.data[0]);
+          setTimeout(() => {
+            opponents.setOpponents((prev) => [...prev, response.data[0]]);
+          }, 1000);
+        });
     };
     const pokeImage = () => {
       setTimeout(() => {
@@ -35,7 +37,6 @@ const AppearanceAnimation = ({ toggle, fight, first, turnCounter }) => {
         setCompImageUrl(zerofilled);
       }, 700);
     };
-    console.log('proverka');
     getCard();
     pokeImage();
     // }

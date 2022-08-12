@@ -1,7 +1,7 @@
 // import axios from 'axios';
 
 // const allCards = (setter) => {
-//   axios.get(`http://localhost:3476/pokedex/`).then((response) => {
+//   axios.get(`https://pokefight-group3-backend.herokuapp.com/pokedex/`).then((response) => {
 //     setter(response.data);
 //   });
 // };
@@ -10,7 +10,9 @@
 import axios from 'axios';
 
 const getCard = async (setter, randomPoke) => {
-  const { data } = await axios.get(`http://localhost:3476/pokedex/${randomPoke}`);
+  const { data } = await axios.get(
+    `https://pokefight-group3-backend.herokuapp.com/pokedex/${randomPoke}`,
+  );
   setter(data);
 };
 
