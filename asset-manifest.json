@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pokefight/static/css/main.31d07d5b.css",
+    "main.js": "/pokefight/static/js/main.29254231.js",
+    "static/media/background-poke.jpeg": "/pokefight/static/media/background-poke.74ea7df0b52379382cb0.jpeg",
+    "static/media/bg-1.png": "/pokefight/static/media/bg-1.aaafe85f3f13f956beaf.png",
+    "static/media/Poké_Ball_icon.svg": "/pokefight/static/media/Poké_Ball_icon.2db7de44dd9ea6558c0113d7d9e3db9d.svg",
+    "index.html": "/pokefight/index.html",
+    "main.31d07d5b.css.map": "/pokefight/static/css/main.31d07d5b.css.map",
+    "main.29254231.js.map": "/pokefight/static/js/main.29254231.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d07d5b.css",
+    "static/js/main.29254231.js"
+  ]
+}
